@@ -6,7 +6,8 @@
     {% block title %}Log-in{% endblock %}
         <h1>Log-in</h1>
             <p>Please, use the following form to log-in:</p>
-        <div class="login-form">
+             <a href="{% url "register" %}">register here</a></p>
+            <div class="login-form">
             <form action="{% url 'login' %}" method="post">
                 {{ form.as_p }}
                 {% csrf_token %}
