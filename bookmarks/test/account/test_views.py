@@ -41,3 +41,23 @@ class UserRegister(ModelMixinTestCase, TestCase):
             },
         )
         self.assertTrue(User.objects.filter(username="Jayachitra").exists())
+
+
+class ProfileEdit(ModelMixinTestCase, TestCase):
+    def test_template_used_with_edit_profile(self):
+        self.client.login(username="sowmiya", password="password")
+        response = self.client.get(reverse("edit"))
+
+        self.assertTemplateUsed(response, "account/edit.html")
+
+    def test_editing_user_profile_succeds(self):
+
+        self.client.login(username="sowiya", password="password")
+        self.client.post(
+            reverse("edit"),
+            data={
+                "first_name": "Jayachitra",
+            },
+        )
+        user = User.objects.get(username="sowmiya")
+        self.assertEqual(user.first_name, "Jayachitra")

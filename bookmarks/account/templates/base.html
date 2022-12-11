@@ -36,6 +36,7 @@
         <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
         {% endfor %}
     {% endif %}
+    <Tab style = "padding: 12px"> <a href="{% url "edit" %}">Edit Profile</a></Tab>
     </div>
     <div id="content">{% block content %} {% endblock %}</div>
   </body>
