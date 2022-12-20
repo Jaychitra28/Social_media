@@ -31,7 +31,7 @@ SECRET_KEY = (
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["mysite.com", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_extensions",
+    "social_django",
 ]
 
 MIDDLEWARE = [
@@ -130,7 +132,8 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTHENTICATION_BACKENDS = [
-    "django.contrib.auth.backends.AllowAllUsersModelBackend"
+    "django.contrib.auth.backends.AllowAllUsersModelBackend",
+    "social_core.backends.facebook.FacebookOAuth2",
 ]
 
 LOGIN_REDIRECT_URL = "dashboard"
@@ -146,3 +149,8 @@ EMAIL_USE_TLS = env("EMAIL_USE_TLS")
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+
+SOCIAL_AUTH_FACEBOOK_KEY = "5972126542882172"  # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = (
+    "1e88da9a114a71aa401965558bc921b0"  # Facebook App Secret
+)
