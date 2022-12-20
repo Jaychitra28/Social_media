@@ -132,7 +132,8 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTHENTICATION_BACKENDS = [
-    "django.contrib.auth.backends.AllowAllUsersModelBackend"
+    "django.contrib.auth.backends.AllowAllUsersModelBackend",
+    "social_core.backends.facebook.FacebookOAuth2",
 ]
 
 LOGIN_REDIRECT_URL = "dashboard"
@@ -148,3 +149,8 @@ EMAIL_USE_TLS = env("EMAIL_USE_TLS")
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+
+SOCIAL_AUTH_FACEBOOK_KEY = "5972126542882172"  # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = (
+    "1e88da9a114a71aa401965558bc921b0"  # Facebook App Secret
+)
